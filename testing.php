@@ -38,12 +38,14 @@ $data = array(
     ),
 
 );
+    
+    
     $dataH;
 
     $jumlah = count($data[0]);
 
     $h2 = 0;
-    $ptl = array();
+    $eigen1 = array();
     $ba=0;
     for ($c = 0; $c < $jumlah; $c++) {
         $h = 0;
@@ -64,14 +66,14 @@ $data = array(
             $h = $h + $g;
             $h2 = $h2 + $g;
         }
-        $ptl[$c] = $h;
+        $eigen1[$c] = $h;
 
         echo $h;
         echo "<br>";
     }
     echo $h2 . "<br><br>";
     $hasil = 0;
-    foreach ($ptl as $ito) {
+    foreach ($eigen1 as $ito) {
         $hasil = $hasil + $ito / $h2;
 
     }
@@ -95,7 +97,7 @@ $data = array(
     $jumlah = count($dataH2[0]);
 
     $h2 = 0;
-    $ptl = array();
+    $eigen2 = array();
     $ba=0;
     for ($c = 0; $c < $jumlah; $c++) {
         $h = 0;
@@ -112,15 +114,21 @@ $data = array(
             $h = $h + $g;
             $h2 = $h2 + $g;
         }
-        $ptl[$c] = $h;
+        $eigen2[$c] = $h;
 
         echo $h;
         echo "<br>";
     }
     echo $h2 . "<br><br>";
     $hasil = 0;
-    foreach ($ptl as $ito) {
+    foreach ($eigen2 as $ito) {
         $hasil = $hasil + $ito / $h2;
 
     }
     echo $hasil."<br>";
+
+    $jeigent = count($eigen1);
+    for ($i=0; $i < $jeigent ; $i++) { 
+        $hasileigen = $eigen2[$i] - $eigen1[$i];
+        echo $hasileigen."<br>";
+    }

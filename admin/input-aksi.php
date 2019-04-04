@@ -20,7 +20,7 @@ if($nama == ""){
 	header("location:index.php?nama=kosong");
 }
 else{
-	$data = "INSERT INTO mhs (nama, asal, nama_file, jurusan, tujuan, tgl_msk, tgl_klr) VALUES ('$nama', '$asal', '$namaFile', '$jurusan ', '$tujuan', '$tgl_msk', '$tgl_klr')";
+	$data = "INSERT INTO mhs (id_need, nama, asal, nama_file, jurusan, tujuan, tgl_msk, tgl_klr) VALUES ('$id_need' ,'$nama', '$asal', '$namaFile', '$jurusan ', '$tujuan', '$tgl_msk', '$tgl_klr')";
 	
 		$row= mysqli_query($connection,$data);
 		// echo $row['nama'];

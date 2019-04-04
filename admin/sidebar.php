@@ -24,11 +24,11 @@
             <i class="fa fa-cube"></i><span>Unit Requirements</span>
           </a>
         </li>
-        <li>
+        <!-- <li>
           <a href="ahp.php">
             <i class="fa fa-laptop"></i><span>AHP</span>
           </a>
-        </li>
+        </li> -->
         <li>
           <a href="about.php">
             <i class="fa fa-child"></i><span>About Us</span>

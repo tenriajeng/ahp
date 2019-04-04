@@ -1,4 +1,4 @@
-<?php 
+<?php
 include 'koneksi.php';
 $nama = $_POST['nama'];
 $asal = $_POST['asal'];
@@ -15,24 +15,20 @@ $tgl_klr = $_POST['tgl_klr'];
 // $tgl_klr = explode('/',$tgl_klr);
 // $keluar = "$tgl_klr[2]-$tgl_klr[1]-$tgl_klr[0]";
 
+if ($nama == "") {
+    header("location:index.php?nama=kosong");
+} else {
+    $data = "INSERT INTO mhs (id_need, nama, asal, nama_file, jurusan, tujuan, tgl_msk, tgl_klr) VALUES ('$id_need' ,'$nama', '$asal', '$namaFile', '$jurusan ', '$tujuan', '$tgl_msk', '$tgl_klr')";
 
-if($nama == ""){
-	header("location:index.php?nama=kosong");
-}
-else{
-	$data = "INSERT INTO mhs (id_need, nama, asal, nama_file, jurusan, tujuan, tgl_msk, tgl_klr) VALUES ('$id_need' ,'$nama', '$asal', '$namaFile', '$jurusan ', '$tujuan', '$tgl_msk', '$tgl_klr')";
-	
-		$row= mysqli_query($connection,$data);
-		// echo $row['nama'];
-		echo $data;
-			
+    $row = mysqli_query($connection, $data);
+    // echo $row['nama'];
+    echo $data;
 
 // tentukan lokasi file akan dipindahkan
-	$dirUpload = "upload/";
+    $dirUpload = "upload/";
 
 // pindahkan file
-	$terupload = move_uploaded_file($namaSementara, $dirUpload.$namaFile);
+    $terupload = move_uploaded_file($namaSementara, $dirUpload . $namaFile);
 
-header("location:index.php?pesan=input");
+    header("location:index.php?pesan=input");
 }
-?>

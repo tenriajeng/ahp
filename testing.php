@@ -12,8 +12,8 @@ $data = array(
         1,
         1,
         3,
-        3,
-        3,
+        1,
+        2,
     ),
     array(
         0.33,
@@ -71,9 +71,18 @@ for ($c = 0; $c < $jumlah; $c++) {
 }
 echo $h2 . "<br><br>";
 $hasil = 0;
+$eigenvector = array();
+$ap = 0;
 foreach ($eigen1 as $ito) {
     $hasil = $hasil + $ito / $h2;
+    $eigenvector[$ap] = $ito / $h2;
+    $ap++;
+}
 
+$jvector = count($eigenvector);
+
+for ($i = 0; $i < $jvector; $i++) {
+    echo $eigenvector[$i]."<br>";
 }
 
 $dataH2;
@@ -116,13 +125,25 @@ for ($c = 0; $c < $jumlah; $c++) {
 }
 echo $h2 . "<br><br>";
 $hasil = 0;
-foreach ($eigen2 as $ito) {
+$eigenvector2 = array();
+$ap = 0;
+foreach ($eigen2 as $ito) {    
     $hasil = $hasil + $ito / $h2;
+    $eigenvector2[$ap] = $ito / $h2;
+    $ap++;
+}
+for ($i = 0; $i < $jvector; $i++) {
+    echo $eigenvector2[$i]."<br>";
 }
 echo $hasil . "<br>";
 
-$jeigent = count($eigen1);
-for ($i = 0; $i < $jeigent; $i++) {
-    $hasileigen = $eigen2[$i] - $eigen1[$i];
-    echo $hasileigen . "<br>";
+// $jeigent = count($eigen1);
+// for ($i = 0; $i < $jeigent; $i++) {
+//     $hasileigen = $eigen2[$i] - $eigen1[$i];
+//     echo $hasileigen . "<br>";
+// }
+
+for ($i=0; $i < $jvector; $i++) { 
+    $hasilvector = ($eigenvector2[$i] - $eigenvector[$i]);
+    echo $hasilvector."<br>";
 }

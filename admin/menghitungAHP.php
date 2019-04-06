@@ -1,13 +1,23 @@
 <?php
-include "admin/koneksi.php";
+include "koneksi.php";
+
+$sql1 = "SELECT mhs.id_jur,jurusan.jur FROM mhs 
+INNER JOIN jurusan ON jurusan.id_jur = mhs.id_jur WHERE mhs.id_need = 0";
+$result = mysqli_query($connection,$sql1);
+$idjur;
+$a=0;
+while($row = mysqli_fetch_array($result)){
+    $idjur[$a] = $row['id_jur'];
+    $a++;
+}
 
 $sql = "SELECT id, namaunit, point, point1, point2, point3, point4, jumlah_keb FROM need";
 $point_need1D;
 $point_need2D;
-$result=mysqli_query($connection,$sql);
-$a=0;
-while($row = mysqli_fetch_array($result)){
-    $c=0;
+$result = mysqli_query($connection, $sql);
+$a = 0;
+while ($row = mysqli_fetch_array($result)) {
+    $c = 0;
     $point_need1D[$a][$c++] = $row['point'];
     $point_need1D[$a][$c++] = $row['point1'];
     $point_need1D[$a][$c++] = $row['point2'];
@@ -15,85 +25,23 @@ while($row = mysqli_fetch_array($result)){
     $point_need1D[$a][$c++] = $row['point4'];
     $a++;
 }
-// for ($i=0; $i < 5; $i++) { 
-//     echo $point_need1D[$i]."<br>";
-// }
-$c=0;
+
+$c = 0;
 $jumlah = count($point_need1D[0]);
 
-for ($i=0; $i < $jumlah ; $i++) { 
-    for ($u=0; $u < $jumlah; $u++) { 
-        echo $point_need1D[$i][$u]."&nbsp;";
+for ($i = 0; $i < $jumlah; $i++) {
+    for ($u = 0; $u < $jumlah; $u++) {
+        echo $point_need1D[$i][$u] . "&nbsp;";
     }
     echo "<br>";
 }
 // $jumlah = count($point_need1D);
-// for ($i=0; $i < $jumlah ; $i++) { 
-//     for ($u=0; $u < $jumlah; $u++) { 
+// for ($i=0; $i < $jumlah ; $i++) {
+//     for ($u=0; $u < $jumlah; $u++) {
 //         $point_need2D[$i][$u] = $point_need1D[$c];
 //         $c++;
 //     }
 // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-$data = array(
-    array(
-        1,
-        1,
-        3,
-        3,
-        3,
-    ),
-    array(
-        1,
-        1,
-        3,
-        1,
-        2,
-    ),
-
-    array(
-        0.33,
-        0.33,
-        1,
-        1,
-        1,
-    ),
-    array(
-        1 / 3,
-        1 / 3,
-        1 / 3,
-        1 / 3,
-        1 / 3,
-    ),
-    array(
-        1 / 3,
-        1 / 3,
-        1 / 3,
-        1 / 3,
-        1,
-    ),
-
-);
 
 $dataH;
 

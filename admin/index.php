@@ -73,6 +73,8 @@
       <div class="box">
             <div class="box-header">
               <h3 class="box-title">Data Of Internship Student</h3>
+              <br>
+              <a href="menghitungAHP.php" class="btn btn-default btn-info" >Tentukan Devisi</a>
             </div>
             <!-- /.box-header -->
             <?php 
@@ -90,20 +92,22 @@
             <div class="box-body no-padding">
               <table class="table table-striped">
                 <tr>
-                  <th ">NO</th>
-                  <th ">Nama</th>
-                  <th ">PTS/PTN/Sekolah</th>
-                  <th ">File Surat</th>
-                  <th ">Jurusan</th>
-                  <th ">Tanggal Masuk</th>
-                  <th ">Tanggal Keluar</th>
-                  <th ">Option</th>
-                  <th "> </th>
+                  <th>NO</th>
+                  <th>Nama</th>
+                  <th>PTS/PTN/Sekolah</th>
+                  <th>File Surat</th>
+                  <th>Jurusan</th>
+                  <th>Tanggal Masuk</th>
+                  <th>Tanggal Keluar</th>
+                  <th>Option</th>
+                  <th> </th>
                 </tr>
                 <tr>
                   <?php 
                   include "koneksi.php";
-                  $name2 = mysqli_query($connection,"SELECT * FROM mhs");
+                  $name2 = mysqli_query($connection,"SELECT mhs.id,mhs.id_need, mhs.nama, mhs.asal, mhs.nama_file,mhs.id_jur,mhs.tujuan,mhs.tgl_msk,mhs.tgl_klr,jurusan.jur 
+                                                     FROM mhs 
+                                                     INNER JOIN jurusan ON jurusan.id_jur  = mhs.id_jur");
                   $nomor = 1;
                   while($data = mysqli_fetch_array($name2)){
                   ?>
@@ -111,8 +115,8 @@
                     <td><?php echo $nomor++; ?></td>
                     <td><?php echo $data['nama']; ?></td>
                     <td><?php echo $data['asal']; ?></td>
-                    <td><a href="/mdis/upload" class="btn btn-default btn-sm" target="_blank">OPEN FILE</a></td>
-                    <td><?php echo $data['jurusan']; ?></td>
+                    <td><a href="/mdis/upload/<?php echo $data['nama_file']; ?>" class="btn btn-default btn-sm" target="_blank">OPEN FILE</a></td>
+                    <td><?php echo $data['jur']; ?></td>
                     <td><?php echo $data['tgl_msk']; ?></td>
                     <td><?php echo $data['tgl_klr']; ?></td>
                     <td>
